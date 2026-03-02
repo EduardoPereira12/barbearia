@@ -57,7 +57,11 @@ nav a:hover {
 
 .hero {
   height: 100vh;
-  background-image: url() center/cover;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url(imagens/fachada.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,18 +213,24 @@ footer {
 <section id="servicos">
   <h2 class="section-title">Nossos Serviços</h2>
   <div class="services">
-    <div class="card">
-      <h3>Corte Masculino</h3>
-      <p>Degradê, social, moderno e personalizado.</p>
-    </div>
-    <div class="card">
-      <h3>Barba Completa</h3>
-      <p>Modelagem profissional com toalha quente.</p>
-    </div>
-    <div class="card">
-      <h3>Combo Corte + Barba</h3>
-      <p>O pacote completo para elevar seu estilo.</p>
-    </div>
+  <div class="card">
+    <img src="imagens/degrade.jpg" alt="Corte Masculino">
+    <h3>Corte Masculino</h3>
+    <p>Degradê, social, moderno e personalizado.</p>
+  </div>
+
+  <div class="card">
+    <img src="imagens/social.jpg" alt="Barba Completa">
+    <h3>Barba Completa</h3>
+    <p>Modelagem profissional com toalha quente.</p>
+  </div>
+
+  <div class="card">
+    <img src="imagens/moderno.jpg" alt="Combo Corte e Barba">
+    <h3>Combo Corte + Barba</h3>
+    <p>O pacote completo para elevar seu estilo.</p>
+  </div>
+
   </div>
 </section>
 
