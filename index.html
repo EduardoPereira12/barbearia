@@ -1,300 +1,426 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Barbearia Elite</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #111;
-  color: #fff;
+body{
+font-family:'Poppins',sans-serif;
+background:#0f0f0f;
+color:white;
+line-height:1.6;
 }
 
-header {
-  position: fixed;
-  width: 100%;
-  padding: 20px 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  transition: 0.3s;
-  z-index: 1000;
+/* MENU */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#000;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
 }
 
-header.scrolled {
-  background: #000;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.7);
+.logo{
+font-size:26px;
+font-weight:700;
+color:#d4af37;
 }
 
-.logo {
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
-  color: #d4af37;
-  letter-spacing: 2px;
+nav ul{
+list-style:none;
+display:flex;
+gap:30px;
 }
 
-nav a {
-  margin-left: 30px;
-  text-decoration: none;
-  color: #fff;
-  transition: 0.3s;
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:.3s;
 }
 
-nav a:hover {
-  color: #d4af37;
+nav a:hover{
+color:#d4af37;
 }
 
-.hero {
-  height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url(imagens/fachada.webp);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 20px;
+/* HERO */
+
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
 }
 
-.hero h1 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 60px;
-  color: #d4af37;
+.video-bg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
 }
 
-.hero p {
-  margin: 20px 0;
-  font-size: 20px;
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:1;
 }
 
-.btn {
-  padding: 15px 40px;
-  background: #d4af37;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.hero-content{
+position:relative;
+z-index:2;
+max-width:700px;
 }
 
-.btn:hover {
-  background: #fff;
+.hero h1{
+font-size:48px;
+margin-bottom:20px;
 }
 
-section {
-  padding: 80px 10%;
+.hero p{
+font-size:18px;
+margin-bottom:30px;
 }
 
-.section-title {
-  text-align: center;
-  font-family: 'Oswald', sans-serif;
-  font-size: 36px;
-  margin-bottom: 50px;
-  color: #d4af37;
+.btn{
+background:#d4af37;
+padding:14px 30px;
+border:none;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
 }
 
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 30px;
+.btn:hover{
+background:#c19c2c;
 }
 
-.card {
-  background: #1c1c1c;
-  padding: 30px;
-  border: 1px solid #333;
-  transition: 0.3s;
+/* SECTIONS */
+
+section{
+padding:100px 8%;
+text-align:center;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  border-color: #d4af37;
+section h2{
+font-size:36px;
+margin-bottom:50px;
+color:#d4af37;
 }
 
-.testimonials {
-  background: #000;
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
 }
 
-.testimonial {
-  background: #1a1a1a;
-  padding: 25px;
-  margin-bottom: 20px;
-  border-left: 4px solid #d4af37;
+.card{
+background:#1b1b1b;
+border-radius:12px;
+overflow:hidden;
+transition:.3s;
 }
 
-.contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-  margin: auto;
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
 }
 
-input, textarea {
-  padding: 15px;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  color: #fff;
+.card-content{
+padding:20px;
 }
 
-footer {
-  background: #000;
-  text-align: center;
-  padding: 20px;
-  color: #aaa;
+.card h3{
+margin-bottom:10px;
 }
 
-/* Botão WhatsApp */
-.whatsapp-float {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 30px;
-  right: 30px;
-  background: #25D366;
-  color: #fff;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 30px;
-  line-height: 60px;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-  transition: 0.3s;
+.card:hover{
+transform:translateY(-10px);
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
+/* DEPOIMENTOS */
+
+.depoimentos{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
 }
 
-@media(max-width: 768px) {
-  .hero h1 {
-    font-size: 38px;
-  }
-  nav {
-    display: none;
-  }
+.depoimento{
+background:#1b1b1b;
+padding:25px;
+border-radius:10px;
+font-style:italic;
+}
+
+.depoimento strong{
+display:block;
+margin-top:10px;
+color:#d4af37;
+}
+
+/* FORM */
+
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input,textarea{
+padding:12px;
+border:none;
+border-radius:6px;
+font-size:15px;
+}
+
+textarea{
+resize:none;
+height:120px;
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25d366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:1fr 1fr;
+}
+
+.depoimentos{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.depoimentos{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+nav ul{
+display:none;
+}
+
 }
 
 </style>
 </head>
+
 <body>
 
-<header id="header">
-  <div class="logo">BARBEARIA ELITE</div>
-  <nav>
-    <a href="#servicos">Serviços</a>
-    <a href="#depoimentos">Depoimentos</a>
-    <a href="#contato">Contato</a>
-  </nav>
+<header>
+
+<div class="logo">Barbearia Elite</div>
+
+<nav>
+<ul>
+<li><a href="#cortes">Cortes</a></li>
+<li><a href="#depoimentos">Depoimentos</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+</nav>
+
 </header>
 
 <section class="hero">
-  <div>
-    <h1>Estilo é Identidade</h1>
-    <p>Cortes modernos e barba perfeita para homens de atitude</p>
-    <button class="btn" onclick="scrollToSection('contato')">Agendar Horário</button>
-  </div>
+
+<video autoplay muted loop playsinline class="video-bg">
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
+<h1>BARBEARIA ELITE</h1>
+<p>Cortes profissionais e estilo moderno</p>
+</div>
+
 </section>
 
-<section id="servicos">
-  <h2 class="section-title">Nossos Serviços</h2>
-  <div class="services">
-  <div class="card">
-    <img src="imagens/degrade.jpg" alt="Corte Masculino">
-    <h3>Corte Masculino</h3>
-    <p>Degradê, social, moderno e personalizado.</p>
-  </div>
-
-  <div class="card">
-    <img src="imagens/social.jpg" alt="Barba Completa">
-    <h3>Barba Completa</h3>
-    <p>Modelagem profissional com toalha quente.</p>
-  </div>
-
-  <div class="card">
-    <img src="imagens/moderno.jpg" alt="Combo Corte e Barba">
-    <h3>Combo Corte + Barba</h3>
-    <p>O pacote completo para elevar seu estilo.</p>
-  </div>
-
-  </div>
 </section>
 
-<section id="depoimentos" class="testimonials">
-  <h2 class="section-title">Depoimentos</h2>
-  <div class="testimonial">
-    <p>"Melhor barbearia da cidade, atendimento top!"</p>
-    <strong>- Carlos M.</strong>
-  </div>
-  <div class="testimonial">
-    <p>"Ambiente premium e corte impecável."</p>
-    <strong>- Rafael S.</strong>
-  </div>
+<section id="cortes">
+
+<h2>Tipos de Corte</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="imagens/degrade.jpg">
+<div class="card-content">
+<h3>Degradê</h3>
+<p>Transição suave e moderna.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="imagens/social.jpg">
+<div class="card-content">
+<h3>Social</h3>
+<p>Clássico e elegante.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="imagens/moderno.jpg">
+<div class="card-content">
+<h3>Moicano</h3>
+<p>Estilo ousado e moderno.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="imagens/degrade.jpg">
+<div class="card-content">
+<h3>Low Fade</h3>
+<p>Degradê baixo e elegante.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="imagens/social.jpg">
+<div class="card-content">
+<h3>Mid Fade</h3>
+<p>Degradê médio equilibrado.</p>
+</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="contato" class="contact">
-  <h2 class="section-title">Agende seu Horário</h2>
-  <form onsubmit="return enviarWhatsApp()">
-    <input type="text" id="nome" placeholder="Seu nome">
-    <input type="text" id="servico" placeholder="Serviço desejado">
-    <textarea id="mensagem" rows="4" placeholder="Mensagem"></textarea>
-    <button class="btn">Enviar</button>
-  </form>
+<section id="depoimentos">
+
+<h2>Depoimentos</h2>
+
+<div class="depoimentos">
+
+<div class="depoimento">
+"Melhor barbearia da cidade! Atendimento perfeito."
+<strong>Lucas</strong>
+</div>
+
+<div class="depoimento">
+"Meu corte ficou impecável. Recomendo muito."
+<strong>Marcos</strong>
+</div>
+
+<div class="depoimento">
+"Ambiente top e barbeiros profissionais."
+<strong>Rafael</strong>
+</div>
+
+</div>
+
 </section>
 
-<footer>
-  © 2026 Barbearia Elite - Todos os direitos reservados
-</footer>
+<section id="contato">
 
-<!-- Botão WhatsApp -->
-<a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20agendar%20uma%20avaliação."
-   class="whatsapp-float"
-   target="_blank">
-   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30">
-</a>
+<h2>Agende seu Horário</h2>
+
+<form onsubmit="enviarWhats(event)">
+
+<input type="text" id="nome" placeholder="Seu nome" required>
+
+<input type="text" id="servico" placeholder="Corte desejado" required>
+
+<textarea id="mensagem" placeholder="Mensagem"></textarea>
+
+<button class="btn">Enviar pelo WhatsApp</button>
+
+</form>
+
+</section>
+
+<a class="whatsapp" href="https://wa.me/5511999999999" target="_blank">💬</a>
 
 <script>
 
-window.addEventListener("scroll", function() {
-  const header = document.getElementById("header");
-  header.classList.toggle("scrolled", window.scrollY > 50);
-});
+function abrirWhats(){
 
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+window.open("https://wa.me/5511999999999","_blank")
+
 }
 
-function enviarWhatsApp() {
-  const nome = document.getElementById("nome").value;
-  const servico = document.getElementById("servico").value;
-  const mensagem = document.getElementById("mensagem").value;
+function enviarWhats(e){
 
-  if(nome === "" || servico === "") {
-    alert("Preencha pelo menos nome e serviço.");
-    return false;
-  }
+e.preventDefault()
 
-  const numero = "5511999999999"; // coloque seu número aqui
-  const texto = `Olá, meu nome é ${nome}%0AServiço: ${servico}%0AMensagem: ${mensagem}`;
-  const url = `https://wa.me/${numero}?text=${texto}`;
+let nome=document.getElementById("nome").value
+let servico=document.getElementById("servico").value
+let mensagem=document.getElementById("mensagem").value
 
-  window.open(url, "_blank");
+let texto=`Olá, meu nome é ${nome}. Gostaria de agendar um corte: ${servico}. ${mensagem}`
 
-  return false;
+let url=`https://wa.me/5511999999999?text=${encodeURIComponent(texto)}`
+
+window.open(url,"_blank")
+
 }
 
 </script>
+
+</body>
+</html>
